@@ -5,6 +5,14 @@
   list-style: none;
   vertical-align: baseline;
 }
+.quote-box .quote-text {
+    text-align: center;
+    width: 450px;
+    height: auto;
+    clear: both;
+    font-weight: 500;
+    font-size: 1.75em;
+}
 div {
   position:relative;
   z-index: 2;
