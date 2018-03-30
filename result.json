@@ -1,0 +1,23 @@
+var r=[{
+		"quote": "A mathematician is a device for turning coffee into theorems.",
+		"author": "Paul Erdos"
+	},
+
+	{
+		"quote": "Try to learn something about everything and everything about something.",
+		"author": "Thomas Henry Huxley"
+	},
+
+	{
+		"quote": "You've got to ask yourself one question: 'Do I feel lucky?' Well, do ya, punk?",
+		"author": "Dirty Harry"
+	},
+	{
+		"quote": "As God is my witness, I'll never be hungry again.",
+		"author": "Gone With the Wind"
+	},
+	{
+		"quote": "Sawyer, you're going out a youngster, but you've got to come back a star!",
+		"author": "42nd Street"
+	}
+]
