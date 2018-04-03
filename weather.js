@@ -1,19 +1,38 @@
-navigator.geolocation.getCurrentPosition(success,error);
+var tempUnit='C';            //set default unit
+var currentTempInCelsius;    
+var getIP='http://ip-api.com/json/';         //Api use for get Ip
+var openWeatherMap='https://fcc-weather-api.glitch.me/api/current?'; //use for weather information in json formate
 
-function success(position){
-	console.log(position.coords.latitude)
-	console.log(position.coords.longitude)
+$('#tempunit').click(function(){                //use for check temp unit
+	var currTempunit=$('#tempunit').text();
+	var newTempunit=currTempunit== "C"?"F":"C";
+	$('#tempunit').text(newTempunit);
+	if(newTempunit=='F'){
+		var fehTemp=Math.round(parseInt($('#temp').text())*9/5+32);
+		$("#temp").text(fehTemp+" "+String.fromCharCode(176));
+	}
+		 else {
+      $("#temp").text(currentTempInCelsius + " " + String.fromCharCode(176));
+    }
 	
-	var GEOCODING='http://maps.googleapis.com/maps/api/geocode/json?latlng='+position.coords.latitude+ '%2C' + position.coords.longitude +'&language=en';
+});
 
-	$.getJSON(GEOCODING).done(function(location){
-		$('#city').html(location.results[0].address_components[3].long_name);	
-		$('#country').html(location.results[0].address_components[6].long_name);
-
-	})
-}
-
-function error(err){
-	console.log(err)
-}
+$.getJSON(getIP).done(function(location){
+   $.getJSON(openWeatherMap,{
+   lat:location.lat,
+   lon:location.lon,
+          units: 'metric',
+        APPID: 'APIKEY'
+    }).done(function(weathers) {
+		 $("#city").html(weathers.name+",");            
+         $("#country").html(weathers.sys.country);
+		var currentTempInCelsius=Math.round(weathers.main.temp*10)/10;
+         $("#temp").html(currentTempInCelsius + " " + String.fromCharCode(176));
+		 $("#tempunit").html(tempUnit);
+		  $("#desc").html(weathers.weather[0].main);
+          
+		
+    })
+})
+   
 

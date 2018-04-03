@@ -1,6 +1,7 @@
 
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <link href="styleWeather.css" rel="stylesheet" />
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/1.3.2/css/weather-icons.min.css">
@@ -64,6 +65,8 @@
       </div>
     </div>
   </div>
+  
+ 
 </body>
 </html>
 
