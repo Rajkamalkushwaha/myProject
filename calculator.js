@@ -1,38 +1,52 @@
 $(document).ready(function(){
-	var log="";
 	var entry='';
-	var ans="";
-	var defal='';
-     var hist='';
+	var ans='';
+    var hist='';
+	var current;
+	var count=0;
 
-	$('button').click(function(){
-		
+	$('button').on('click',function(){
 	entry = $(this).attr("value");
-    console.log('entry: ' + entry);
-		
-	if(entry==='+' || entry==='-' || entry==='*' || entry==='/' || entry==='/' || entry==='='){
-      log=defal;
-	 
-		  entry.slice(1);
-	  
-	  } 
+    
+	if(entry==='+' || entry==='-' || entry==='*' || entry==='/' || entry==='/'){
+	  ans='';
+	 }
 	
-	if(entry==='ac' || entry==='ce'){
+	 if(count==0){
+	 if(entry=='=' && entry.length!==0){
+		 ans='='+eval(hist);
+		 hist+=ans;
+		 count++;
+	 }
+	 }else{
+		 var n=hist.indexOf('=');
+		 hist=hist.substring(n+1);
+		 ans='='+eval(hist);
+	 }
+	
+	  
+	 if(entry==='ac' || entry==='ce'){
       ans = '';
       current = '';
       entry = '';
-      log = '';
 	  hist='';
+	  count='0';
       $('#answer').html('0');
       $('#history').html('0');	
 	 }else
 	 {
-		  hist+=entry;
-		 log+=entry;
-		 $('#answer').html(log);
-        $('#history').html(hist);	
-	 }
-	});
-
-
-});
+		 if(entry!=='=' && ans.length<8 && hist.length<20){
+   		     hist+=entry;
+	    	 ans+=entry;
+		   $('#answer').html(ans);
+           $('#history').html(hist);
+	   }else if(ans.length<8 && hist.length<20){
+		  $('#answer').html(ans);
+          $('#history').html(hist);
+		  ans='';
+          }else{
+			  alert("length is out of limit");
+		  }
+	    }
+	 });
+ });
