@@ -3,16 +3,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
+var a = ['','one','two','three','four', 'five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+var b = ['', '', 'twenty','thirty','forty','fifty', 'sixty','seventy','eighty','ninety'];
 $("#btn").click(function(){
 var text=$("input[type=text]").val().toLowerCase();
-if(text=="one"){
-$("#demo").html("1");
-}else if(text=="two"){
-$("#demo").html("2");
-}else{
-$("#demo").html("no is not find");
-}
-  });
+console.log(text);
+for(var i=0;i<a.length;i++){
+   if(a[i]===text){
+   $("#demo").text(i);
+   console.log(i);
+       }
+    }
+ });
 });
 </script>
 </head>
@@ -22,3 +24,7 @@ $("#demo").html("no is not find");
 <p id="demo"></p>
 </body>
 </html>
+
+
+
+
