@@ -1,0 +1,36 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	var T=(new Date).getTime();
+	$(function () {
+      var ajaxes  = [{ url : 'sidebar.html'}, { url :'main.html'}],
+        current = 0;
+ 
+    function do_ajax() {
+        if (current < ajaxes.length) {
+			$.get(ajaxes[current].url).done(function(serverResponse,index) {
+                       current++;
+                      	 do_ajax();
+						 console.log(serverResponse);
+					   $('#sidebar').html(serverResponse);
+					   $('#main').html(serverResponse);
+				     var now = new Date().getTime();
+					 var NewTimeStamp=now-T;
+					 $('#timestamp').html(NewTimeStamp);
+                    });
+				}
+		    }
+
+        do_ajax();
+   });
+});
+</script>
+</head>
+<body>
+<div id="sidebar"></div>
+<div id="main"></div>
+<h3>Both the requests are completed in milliseconds:</h3><div id="timestamp"></div>
+</body>
+</html>
