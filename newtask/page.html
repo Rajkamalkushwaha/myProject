@@ -10,13 +10,12 @@ $(document).ready(function(){
  
     function do_ajax() {
         if (current < ajaxes.length) {
-			$.get(ajaxes[current].url).done(function(serverResponse,index) {
+			$.get(ajaxes[current].url).done(function() {
                        current++;
                       	 do_ajax();
-						 console.log(serverResponse);
-					   $('#sidebar').html(serverResponse);
-					   $('#main').html(serverResponse);
-				     var now = new Date().getTime();
+						 $('#sidebar').html(ajaxes[0].url);
+						  $('#main').html(ajaxes[1].url);
+					 var now = new Date().getTime();
 					 var NewTimeStamp=now-T;
 					 $('#timestamp').html(NewTimeStamp);
                     });
