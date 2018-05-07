@@ -1,0 +1,26 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+for(var i=1;i<=100;i++){
+$("ul").append("<li>"+i+"</li>");
+}
+$("li").click(function(){
+$(this).detach();
+});
+});
+</script>
+
+</head>
+<body>
+<style>
+body{
+background-color:black;
+color:white;
+}
+</style>
+<ul>
+</ul>
+</body>
+</html>
